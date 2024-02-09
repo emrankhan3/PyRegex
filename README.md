@@ -4,10 +4,12 @@
 Raw string in python a string prefix with an r
 ```py
 print('\tTab')
----->Tab
+#output
+#---->Tab
 ```
 vs
 ```py
 print(r'\tTab')
-\tTab
+#output
+#\tTab
 ```
