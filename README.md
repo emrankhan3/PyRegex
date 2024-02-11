@@ -46,14 +46,16 @@ r'[^a-zA-Z]' will match anything except a-z and A-Z
 
 r'[^b]at'    will match cat, rat, hat anything but not 'bat'
 
-Quantifiers:
+#Quantifiers:
+#  * -> 0 or More`
+#  + -> 1 or More`
+# ?		-> 0 or One
+# {3}		-> exact Number
+# {3,4}		-> range of number {min,max}
+# for match='emranbspt@gmail.com','emran@duet.edu
+pq = re.compile(r'\w+@\w+\.\w+')
 
-- `-> 0 or More`
-- `-> 1 or More`
 
-?		-> 0 or One
-{3}		-> exact Number
-{3,4}		-> range of number {min,max}
 
 Group:
 ()
@@ -66,7 +68,12 @@ Mr. T
 ###Sample Regexs ####
 
 email = '''
-[CoreMSchafer@gmail.com](mailto:CoreMSchafer@gmail.com)[corey.schafer@university.edu](mailto:corey.schafer@university.edu)[corey-321-schafer@my-work.net](mailto:corey-321-schafer@my-work.net)
+CoreMSchafer@gmail.com
+mailto:CoreMSchafer@gmail.com
+corey.schafer@university.edu
+mailto:corey.schafer@university.edu
+corey-321-schafer@my-work.net
+mailto:corey-321-schafer@my-work.net
 '''
 pat = re.compile(r'\w+@gmail.com')
 
@@ -75,17 +82,19 @@ pat = re.compile(r'\w+@gmail.com')
 #p2 =  re.compile(r'\w+@\w+')
 for m in p2.finditer(email):
 print(m)
-output:
-<re.Match object; span=(1, 19), match='CoreMSchafer@gmail'>
-<re.Match object; span=(30, 48), match='schafer@university'>
-<re.Match object; span=(63, 73), match='schafer@my'>
+
+#output:
+# <re.Match object; span=(1, 19), match='CoreMSchafer@gmail'>
+# <re.Match object; span=(30, 48), match='schafer@university'>
+# <re.Match object; span=(63, 73), match='schafer@my'>
 
 p3 = re.compile(r'[a-zA-Z.-0-9]+@[a-zA-Z-.]+\.(com|edu|net)')
 for m in p3.finditer(email):
 print(m)
-<re.Match object; span=(1, 23), match='CoreMSchafer@gmail.com'>
-<re.Match object; span=(24, 52), match='corey.schafer@university.edu'>
-<re.Match object; span=(62, 82), match='-schafer@my-work.net'>
+#output
+# <re.Match object; span=(1, 23), match='CoreMSchafer@gmail.com'>
+# <re.Match object; span=(24, 52), match='corey.schafer@university.edu'>
+# <re.Match object; span=(62, 82), match='-schafer@my-work.net'>
 
 p4 = re.compile(r'[a-zA-Z0-9.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
 for m in p4.finditer(email):
