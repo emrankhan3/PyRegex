@@ -14,8 +14,8 @@ print(r'\tTab')
 #\tTab
 ```
 
-# python Regex
-
+## python Regex
+```py
 .		- Any Character Except New Line
 \d		- Digit (0-9)
 \D		- Not a Digit (0-9)
@@ -104,6 +104,5 @@ for m in pcurlG.finditer(urls):
 print(m.group())
 
 == findall() ===
-
-
+```
 ref: https://www.youtube.com/watch?v=K8L6KVGG-7o
